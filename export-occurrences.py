@@ -2,8 +2,10 @@ import csv
 import requests
 
 
+# Tweak this URL based on filtering preferences
 fetch_url = "https://antenna.insectai.org/api/v2/occurrences/?project_id=107&ordering=-created_at&limit=20&offset=0&classification_threshold=0&deployment=280&date_end=2024-08-01&date_start=2024-07-31"
 
+# Export results will be saved to this file
 csv_output = "occurrences.csv"
 
 
