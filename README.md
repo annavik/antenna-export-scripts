@@ -18,6 +18,6 @@ pip3 install -r requirements.txt
 ## Export data
 
 ```bash
-# Export occurrence
+# Export occurrences
 python3 export-occurrences.py
 ```
