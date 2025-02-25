@@ -12,33 +12,29 @@ def export_occurrences(url, page_count, csvwriter):
     response = requests.get(url)
     data = response.json()
 
+    # Update CSV with results
     if len(data["results"]):
-        write_occurrences_to_csv(csvwriter, data["results"])
+        for occurrence in data["results"]:
+            id = occurrence["id"]
+            timestamp = occurrence["first_appearance_timestamp"]
+            taxon_id = occurrence["determination_details"]["taxon"]["id"]
+            taxon_label = occurrence["determination_details"]["taxon"]["name"]
+            binary_label = "Non-Moth" if taxon_id == 11613 else "Moth"
+            score = occurrence["determination_score"]
+            csvwriter.writerow(
+                [
+                    id,
+                    timestamp,
+                    taxon_id,
+                    taxon_label,
+                    binary_label,
+                    score,
+                ]
+            )
 
+    # Go to next page, if there is one
     if data["next"]:
-        # Go to next page
         export_occurrences(data["next"], page_count + 1, csvwriter)
-
-
-def write_occurrences_to_csv(csvwriter, occurrences):
-    for occurrence in occurrences:
-        id = occurrence["id"]
-        timestamp = occurrence["first_appearance_timestamp"]
-        taxon_id = occurrence["determination_details"]["taxon"]["id"]
-        taxon_label = occurrence["determination_details"]["taxon"]["name"]
-        binary_label = "Non-Moth" if taxon_id == 11613 else "Moth"
-        score = occurrence["determination_score"]
-
-        csvwriter.writerow(
-            [
-                id,
-                timestamp,
-                taxon_id,
-                taxon_label,
-                binary_label,
-                score,
-            ]
-        )
 
 
 with open(csv_output, "w") as csvfile:
