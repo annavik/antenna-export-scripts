@@ -11,8 +11,8 @@ def get_taxa_stats():
     print("fetching projects")
     projects_response = requests.get("https://antenna.insectai.org/api/v2/projects")
     projects_data = projects_response.json()
-
     taxa_stats = []
+
     if len(projects_data["results"]):
         for project in projects_data["results"]:
             taxon = get_top_taxon(project["id"])
@@ -70,8 +70,8 @@ def get_top_taxon(project_id):
 
     if len(taxa_data["results"]):
         return taxa_data["results"][0]
-    else:
-        return None
+
+    return None
 
 
 # Based on a keyword, search Fieldguide for a matching category
@@ -91,8 +91,7 @@ def get_fieldguide_category(keyword):
 
         return category
 
-    else:
-        return None
+    return None
 
 
 with open(csv_output, "w") as csvfile:
