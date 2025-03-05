@@ -102,7 +102,7 @@ with open(csv_output, "w") as csvfile:
             "project_name",
             "taxon_id",
             "taxon_name",
-            "rank",
+            "taxon_rank",
             "occurrences_count",
             "fieldguide_category_id",
             "fieldguide_url",
