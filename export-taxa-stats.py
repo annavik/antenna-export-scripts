@@ -2,8 +2,8 @@ import csv
 import requests
 
 
-# Export results will be saved to this file
-csv_output = "taxa-stats.csv"
+csv_output = "taxa-stats.csv"  # Export results will be saved to this file
+fieldguide_parent_category = "5926f024fd89783b2a721ba8"  # Lepidoptera
 
 
 # Summarize taxa stats for all projects

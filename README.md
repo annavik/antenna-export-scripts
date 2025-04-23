@@ -1,4 +1,4 @@
-# Antenna export scripts
+# Antenna help scripts
 
 This repo includes some simple Python scripts that can be used to export data from [Antenna](https://antenna.insectai.org) to CSV files. Checkout https://api.antenna.insectai.org/api/v2/docs/ for different fetch options and feel free to tweak the scripts as needed 🦋
 
@@ -15,7 +15,7 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## Export data
+## Help scripts
 
 ```bash
 # Export occurrences
@@ -23,4 +23,7 @@ python3 export-occurrences.py
 
 # Export taxa stats (top taxon for each project)
 python3 export-taxa-stats.py
+
+# Populate a category map with Fieldguide data
+python3 populate-category-map.py
 ```
