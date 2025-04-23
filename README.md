@@ -15,7 +15,7 @@ source .venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-## Help scripts
+## Export scripts
 
 ```bash
 # Export occurrences
@@ -23,7 +23,11 @@ python3 export-occurrences.py
 
 # Export taxa stats (top taxon for each project)
 python3 export-taxa-stats.py
+```
 
+## Cateogry map scripts
+
+```bash
 # Populate a category map with Fieldguide data
 python3 populate-category-map.py
 ```
