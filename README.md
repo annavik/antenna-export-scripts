@@ -28,6 +28,9 @@ python3 export-taxa-stats.py
 ## Cateogry map scripts
 
 ```bash
-# Populate a category map with Fieldguide data
-python3 populate-category-map.py
+# Collect data from Fieldguide based on a category map
+python3 collect-fg-data.py
+
+# Update a species list with data from Fieldguide
+python3 update-species-list.py
 ```
