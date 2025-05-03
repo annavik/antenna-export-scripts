@@ -23,6 +23,9 @@ python3 export-occurrences.py
 
 # Export taxa stats (top taxon for each project)
 python3 export-taxa-stats.py
+
+# Export a taxa list
+python3 export-taxa-list.py
 ```
 
 ## Cateogry map scripts
