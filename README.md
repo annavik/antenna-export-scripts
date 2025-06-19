@@ -25,6 +25,16 @@ python3 export-occurrences.py
 python3 export-taxa-stats.py
 ```
 
+### Scripts to extend taxa
+
+```bash
+# Collect labels from algorithms avaible on Antenna
+python3 extend-taxa/collect-labels.py
+
+# Extend labels with data from Antenna, GBIF and Fieldguide
+python3 extend-taxa/collect-label-data.py
+```
+
 ### Scripts for Totumas
 
 ```bash
