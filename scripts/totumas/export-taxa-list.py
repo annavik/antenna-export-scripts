@@ -1,16 +1,14 @@
+from slugify import slugify
 import json
 import os
 import requests
-from slugify import slugify
 
+# Input config
+fetch_url = "https://ood.antenna.insectai.org/api/v2/taxa/?project_id=11&ordering=name&limit=20&offset=0&unknown_species=false&taxa_list_id=25&rank=SPECIES&include_unobserved=true"
 
-# Tweak this based on project and filtering preferences
-fetch_url = "https://api-ood.antenna.insectai.org/api/v2/taxa/?limit=20&offset=0&project_id=6&unknown_species=true"
-
-
-# Export results will be saved to this file
-json_output = "../output/taxa/taxa.json"
-images_output = "../output/taxa/images/"
+# Output config
+json_output = "output/taxa/taxa.json"
+images_output = "output/taxa/images/"
 
 
 def export_taxa(url, page_count, taxa):

@@ -1,10 +1,13 @@
 import csv
 import requests
 
-category_map_url = "https://object-arbutus.cloud.computecanada.ca/ami-models/moths/classification/panama_plus_category_map-with_names.json"  # Category map will be fetched from this URL
-csv_output = "fg-data.csv"  # Export results will be saved to this file
+# Input config
+category_map_url = "https://object-arbutus.cloud.computecanada.ca/ami-models/moths/classification/panama_plus_category_map-with_names.json"
 fieldguide_api_url = "https://fieldguide.ai/api2"
 fieldguide_parent_category = "5926f024fd89783b2a721ba8"  # Lepidoptera
+
+# Output config
+csv_output = "fg-data.csv"
 
 
 # Fetch category map and populate records with data from Fieldguide

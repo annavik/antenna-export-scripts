@@ -4,6 +4,6 @@
 # Python
 .venv
 
-# Export results
+# Input and output data
 *.csv
 output

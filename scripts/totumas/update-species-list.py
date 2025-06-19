@@ -1,8 +1,12 @@
 import csv
 
+# Input config
 species_list_path = "complete-panama-list.csv"  # Expected CSV format: gbif_name,gbif_key,fieldguide_id,cover_image_url,cover_image_copyright,antenna_id,inat_id,category_map_index,common_name_en,training_images_count,example_occurrence_image_url,genus,family
 fg_data_path = "fg-data.csv"  # Expected CSV format: gbif_name,category_map_index,fieldguide_id,fieldguide_label,cover_image_base_url,cover_image_url,cover_image_copyright,common_name_en,exact_match
+
+# Output config
 csv_output = "complete-panama-list-updated.csv"
+
 
 # Read data
 species_list = []

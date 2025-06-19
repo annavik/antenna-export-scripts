@@ -1,15 +1,19 @@
 import csv
 import requests
 
-
-csv_output = "taxa-stats.csv"  # Export results will be saved to this file
+# Input config
+fetch_url = "https://antenna.insectai.org/api/v2/projects"
+fieldguide_api_url = "https://fieldguide.ai/api2"
 fieldguide_parent_category = "5926f024fd89783b2a721ba8"  # Lepidoptera
+
+# Output config
+csv_output = "taxa-stats.csv"
 
 
 # Summarize taxa stats for all projects
 def get_taxa_stats():
     print("fetching projects")
-    projects_response = requests.get("https://antenna.insectai.org/api/v2/projects")
+    projects_response = requests.get(fetch_url)
     projects_data = projects_response.json()
     taxa_stats = []
 
@@ -78,8 +82,8 @@ def get_top_taxon(project_id):
 def get_fieldguide_category(keyword):
     print("fetching category from Fieldguide using keyword ", keyword)
     categories_response = requests.get(
-        "https://fieldguide.ai/api2/search/search?category=%s&keywords=%s&limit=1"
-        % ("5926f024fd89783b2a721ba8", keyword)
+        "%s/search/search?category=%s&keywords=%s&limit=1"
+        % (fieldguide_api_url, fieldguide_parent_category, keyword)
     )
     categories_data = categories_response.json()
 

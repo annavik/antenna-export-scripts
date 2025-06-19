@@ -1,6 +1,7 @@
 certifi==2025.1.31
 charset-normalizer==3.4.1
 idna==3.10
+pillow==11.2.1
 python-slugify==8.0.4
 requests==2.32.3
 text-unidecode==1.3
