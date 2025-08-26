@@ -12,11 +12,11 @@ fieldguide_category_api_url = (
 start_index = 0
 
 # Output config
-csv_output = "labels-extended.csv"  # Expected CSV format: label,antenna_id,gbif_key,fieldguide_id,cover_image_url,cover_image_credit
+csv_output = "label-data.csv"  # Expected CSV format: label,antenna_id,gbif_key,fieldguide_id,cover_image_url,cover_image_credit
 
 
 def collect_label_data(label, csvwriter):
-    print("fetching data for label: ", label)
+    print("fetching data for label ", label)
 
     antenna_id = None
     gbif_key = None
@@ -55,7 +55,13 @@ def collect_label_data(label, csvwriter):
 
 # Based on a label, search Antenna for a matching taxon
 def get_antenna_taxon(label):
+    print("fetching data from Antenna...")
     taxa_response = requests.get(antenna_taxa_api_url % (label))
+
+    if not taxa_response.ok:
+        print("error fetching, trying again...")
+        return get_antenna_taxon(label)
+
     taxa_data = taxa_response.json()
 
     if len(taxa_data["results"]):
@@ -68,7 +74,13 @@ def get_antenna_taxon(label):
 
 # Based on a label, search GBIF for a matching taxon
 def get_gbif_taxon(label):
+    print("fetching data from GBIF...")
     taxa_response = requests.get(gbif_taxon_api_url % (label))
+
+    if not taxa_response.ok:
+        print("error fetching, trying again...")
+        return get_gbif_taxon(label)
+
     taxa_data = taxa_response.json()
 
     if len(taxa_data["results"]):
@@ -82,7 +94,13 @@ def get_gbif_taxon(label):
 
 # Based on a label, search Fieldguide for a matching category
 def get_fieldguide_category(label):
+    print("fetching data from Fieldguide...")
     categories_response = requests.get(fieldguide_categories_api_url % (label))
+
+    if not categories_response.ok:
+        print("error fetching, trying again...")
+        return get_fieldguide_category(label)
+
     categories_data = categories_response.json()
 
     if len(categories_data):
@@ -94,6 +112,11 @@ def get_fieldguide_category(label):
         category_details_response = requests.get(
             fieldguide_category_api_url % (category["id"])
         )
+
+        if not category_details_response.ok:
+            print("error fetching details, trying again...")
+            return get_fieldguide_category(label)
+
         category_details_data = category_details_response.json()
 
         if category_details_data is not None:
