@@ -21,6 +21,9 @@ pip3 install -r requirements.txt
 # Export occurrences
 python3 export-occurrences.py
 
+# Export taxa based on a label map
+python3 export-taxa.py
+
 # Export taxa stats (top taxon for each project)
 python3 export-taxa-stats.py
 ```
