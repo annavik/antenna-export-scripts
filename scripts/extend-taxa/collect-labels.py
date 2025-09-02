@@ -19,7 +19,7 @@ def get_labels():
     if len(algorithms_data["results"]):
         for algorithm in algorithms_data["results"]:
             print("fetching labels for algorithm ", algorithm["id"])
-            labels_response = requests.get(labels_url % (algorithm["id"]))
+            labels_response = requests.get(antenna_labels_api_url % (algorithm["id"]))
             labels_data = labels_response.json()
             for label in labels_data["labels"]:
                 if label not in labels:
